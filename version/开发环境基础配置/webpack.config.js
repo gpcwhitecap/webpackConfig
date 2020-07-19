@@ -2,10 +2,7 @@
 const {
     resolve
 } = require('path');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// 将js中的css提取出单独的文件 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 
 module.exports = {
@@ -32,9 +29,7 @@ module.exports = {
                 use: [
                     // use数据中loader执行顺序：从右到左 从上到下
                     // 创建style标签，讲js里的样式资源插入进行，添加到head
-                    // 'style-loader',
-                    //  MiniCssExtractPlugin取代style-loader. 提取js中的css成单独的文件 
-                    MiniCssExtractPlugin.loader,
+                    'style-loader',
                     // 将css文件变成commonjs模块加载js中，形成样式字符串
                     'css-loader'
                 ]
@@ -72,9 +67,8 @@ module.exports = {
                 loader: 'flie-loader',
                 options: {
                     name: '[hash:10].[ext]',
-                    outputPath: 'media',
                 },
-                
+                outputPath: 'media',
             }
         ]
     },
@@ -85,11 +79,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             // 复制路径html，并引入打包文件
             template: './src/index.html'
-        }),
-        new MiniCssExtractPlugin({
-            // 输出css 进行重命名
-            filename: 'css/built.css'
-        }),
+        })
     ],
     // 模式  production生产环境 development开发模式
     mode: 'development',
