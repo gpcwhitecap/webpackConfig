@@ -183,6 +183,16 @@ module.exports = {
     // open: true,
     // 开启HMR功能
     hot: true,
+    // 服务器代理
+    // proxy: {
+    //   api: {
+    //     target: 'http://localhost:300',
+    //     // 发送请求时，请求路径重写：/apo/xxx --> /xxx
+    //     pathRewrite: {
+    //       '^/api': '',
+    //     },
+    //   },
+    // },
   },
   // 将node_modules单独输入一个JS
   optimization: {
